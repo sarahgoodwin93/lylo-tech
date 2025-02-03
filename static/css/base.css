@@ -1,3 +1,103 @@
-body {
+* {
     background-color: #FDF9F5;
+}
+
+/* Ensure full-height layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #FDF9F5;
+}
+
+/* Main content should take up all available space */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Main content area */
+main {
+    flex: 1;
+}
+
+/* Logo */
+
+.logo-img {
+    width: 50%;
+    text-align: center;
+}
+
+.tagline {
+    text-decoration: none;
+    font-size: 15px;
+    margin-top: 2px;
+    color: black;
+}
+
+/* Nav Bar */
+
+.navbar-toggler-icon {
+    background-color: #51c0df;
+    color: black;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    text-decoration: none;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #FDF9F5;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: black;
+}
+
+.navbar-nav .nav-link.active {
+    color: #51c0df;
+}
+
+/* Footer */
+
+.footer i {
+    color: #51c0df;
+}
+
+.footer a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer a:hover {
+    text-decoration: none;
+    color: #51c0df;
+}
+
+.fa-github {
+    text-decoration: none;
+    color: #51c0df;
+}
+
+footer {
+    color: black;
+    background-color: #FDF9F5;
+}
+
+.site-creator {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.site-creator li {
+    font-size: 12px;
+    color: black;
 }

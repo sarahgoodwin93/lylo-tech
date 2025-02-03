@@ -34,13 +34,107 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Stripe JS -->
     <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     {% endblock %}
 
     <title>LYLO TECH</title>
 </head>
 <body>
+<!-- Logo and Navbar -->
+<header class="container-fluid fixed-top">
+    <div id="topnav" class="row bg-white pt-lg-2">
+        <div class="col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+            <!-- Logo and Tagline -->
+            <div class="nav-link main-logo-link">
+                <img class="logo-img" src="{% static 'images/logo.png' %}" alt="lylo logo image">
+                <p class="tagline">Keep your head above tech</p>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg justify-content-end">
+                <!-- Hamburger Menu for Mobile -->
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa-solid fa-bars"></span>
+                </button>
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Home, Services, and Products Links -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="/">Work</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == services_url %}active{% endif %}" href="/">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == services_url %}active{% endif %}" href="/">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main>
     {% block content %}
-        <h1>Hello World</h1>
-    {% endblock content %}
+    {% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Us Details -->
+            <div class="col-md-6">
+                <ul class="list-unstyled d-flex flex-column">
+                    <li class="d-flex flex-row align-items-center">
+                        Contact Details:
+                    </li>
+                    <li class="d-flex flex-row align-items-center">
+                        <i class="fas fa-phone-alt mr-2"></i><a href="tel:%20+61477020336">Whatsapp:+44 7849 266 337</a>
+                    </li>
+                    <li class="d-flex flex-row align-items-center">
+                        <i class="fas fa-envelope mr-2"></i> <a href="/">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled d-flex flex-column">
+                    <!-- Social media links -->
+                    <li class="d-flex flex-row align-items-center">
+                        Connect with us on social:
+                    </li>
+                    <li class="d-flex flex-row align-items-center">
+                        <a href="https://www.instagram.com/lylotechstudio/" target="_blank" rel="noopener" aria-label="LYLO Instagram page"><i class="fab fa-instagram mr-2"></i> Instagram</a>
+                    </li>
+                    <li class="d-flex flex-row align-items-center">
+                        <a href="https://www.linkedin.com/company/104229838/admin/dashboard/" target="_blank" rel="noopener" aria-label="Linkedin LYLO TECH"><i class="fab fa-linkedin mr-2"></i> LinkedIn</a>
+                    </li>
+                    <li class="d-flex flex-row align-items-center">
+                        <a href="/" rel="noopener" aria-label="Newsletter contact form"><i class="fa-solid fa-envelope"></i>  Newsletter Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Site Creator details -->
+            <div class="col-md-6 text-right site-creator">
+                <ul class="list-unstyled d-flex flex-column">
+                    <li>
+                        {% block copyright %}Site made by Sarah Goodwin{% endblock copyright %}
+                    </li>
+                    <li>
+                        <!-- Link to GitHub page -->
+                        <a href="https://github.com/sarahgoodwin93" target="_blank" rel="noopener" aria-label="Github Page">Github: <i class="fab fa-github"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% block extra_js %}
+    <!-- Font Awesome Script -->
+    <script src="https://kit.fontawesome.com/17e7a6d47c.js" crossorigin="anonymous"></script>
+{% endblock %}
 </body>
 </html>
