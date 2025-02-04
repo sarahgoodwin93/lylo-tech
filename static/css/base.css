@@ -89,6 +89,7 @@ main {
 footer {
     color: black;
     background-color: #FDF9F5;
+    padding: 10px 0;
 }
 
 .site-creator {
@@ -156,6 +157,10 @@ footer {
 }
 
 /* Gallery Container */
+
+.gallery-container {
+    margin-top: 10px
+}
 
 .image-container {
     width: 40%;
