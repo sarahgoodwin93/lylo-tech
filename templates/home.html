@@ -1,40 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <section>
-        <div class="hero-image">
-            <h1>Hello.</h1>
+{% load static %}
+    <section class="comparisonSection">
+        <div class="comparisonImage beforeImage">
+            <img src="{% static 'images/hero-image.png' %}" alt="hero image">
+        </div>
+        <div class="comparisonImage afterImage">
+            <img src="{% static 'images/after-hero-image.png' %}" alt="after hero image">
         </div>
     </section>
 
     <section>
-        <div class="home-cta home-cta-work">
+        <div class="page-break"></div>
+    </section>
 
-        </div>
-        <div class="home-cta home-cta-about">
-
-        </div>
-        <div class="home-cta home-cta-contact">
-
-        </div>
+    <section class="home-cta-section">
+        <a href="/">
+            <div class="home-cta">Work</div>
+        </a>
+        <a href="/">
+            <div class="home-cta">Work</div>
+        </a>
+        <a href="/">
+            <div class="home-cta">Work</div>
+        </a>
     </section>
 
     <section>
-        <div class="work-section">
-
-        </div>
+        <div class="page-break"></div>
     </section>
 
-    <section>
-        <div class="about-section">
-            
-        </div>
-    </section>
+<!-- Font Awesome Script -->
+    <script src="https://assets.codepen.io/16327/gsap-latest-beta.min.js?r=v3.11.3"></script>
+    <script src="https://assets.codepen.io/16327/ScrollTrigger.min.js"></script>
+    <script src="{% static 'js/base.js' %}"></script>   
 
-    <section>
-        <div class="contact-section">
-            
-        </div>
-    </section>
-    
+
 {% endblock %}
