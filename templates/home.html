@@ -1,32 +1,153 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-    <section class="comparisonSection">
-        <div class="comparisonImage beforeImage">
-            <img src="{% static 'images/hero-image.png' %}" alt="hero image">
-        </div>
-        <div class="comparisonImage afterImage">
-            <img src="{% static 'images/after-hero-image.png' %}" alt="after hero image">
-        </div>
-    </section>
-
-    <section class="home-cta-section">
-            <div class="a"></div>
-            <div class="b"></div>
-            <div class="c"></div>
-    </section>
-
-    <section>
-        <div class="page-break"></div>
-    </section>
-
-    <section class="gallery-container">
-        <div class="gallery-container">
-            <div class="image-container"></div>
-            <div class="image-container"></div>
-            <div class="image-container"></div>
-            <div class="image-container"></div>
-        </div>
-    </section>
-
+<section class="comparisonSection">
+   <div class="comparisonImage beforeImage">
+      <img src="{% static 'images/hero-image.png' %}" alt="hero image">
+   </div>
+   <div class="comparisonImage afterImage">
+      <img src="{% static 'images/after-hero-image.png' %}" alt="after hero image">
+   </div>
+</section>
+<section>
+   <div id="page" class="site">
+   <div id="feather" class="feather"></div>
+   <div id="content" class="site-content" role="main">
+   <section id="intro" class="full-screen pt-5 gradient-orange">
+      <h1>Our Work</h1>
+   </section>
+   <section id="panels">
+      <div id="panels-container" style="width: 500%;">
+      <article id="panel-1" class="panel full-screen panel-1-image">
+         <div class="container">
+            <div class="row">
+               <div class="col-6">
+                  <img src="{% static 'images/project-roku.png' %}" alt="Roku Salon">
+               </div>
+               <div class="col-6 d-flex flex-column">
+                  <h2>Roku Salon</h2>
+                  <p class="step-description">
+                     We built a bespoke Shopify website for ROKU Salon, tailoring the design and functionality to match their premium brand. 
+                     We created custom Shopify sections for a seamless user experience, making it easy for customers to explore services and book appointments. 
+                     By leveraging Shopify’s Liquid templating, we delivered a flexible, high-performing site that ROKU can easily manage and grow with.
+                  </p>
+                  <br>
+                  <div>
+                     <a href="https://rokusalon.myshopify.com/?_ab=0&_fd=0&_sc=1">Visit Site</a>
+                     <a href="/">Find out More</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+      <article id="panel-2" class="panel full-screen gradient-blue">
+         <div class="container">
+            <div class="row">
+               <div class="col-6">
+                  <img src="" alt="">
+               </div>
+               <div class="col-6 d-flex flex-column">
+                  <h2>N | F Beauty</h2>
+                  <p class="step-description">
+                     We built a bespoke website for NF Beauty, designed to showcase services and provide a seamless booking system for clients. 
+                     The site delivers a sleek, user-friendly experience, allowing customers to explore treatments and schedule appointments effortlessly. 
+                     With a customised design and smooth functionality, NF Beauty’s online presence reflects its high-quality services and professionalism.
+                  </p>
+                  <div>
+                     <a href="https://rokusalon.myshopify.com/?_ab=0&_fd=0&_sc=1">Visit Site</a>
+                     <a href="/">Find out More</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+      <article id="panel-3" class="panel full-screen gradient-green">
+         <div class="container">
+            <div class="row">
+               <div class="col-6">
+                  <img src="" alt="">
+               </div>
+               <div class="col-6 d-flex flex-column">
+                  <h2>Event Registration and Backend System</h2>
+                  <p class="step-description">
+                     We developed a bespoke registration system for an annual event, designed to streamline the entire signup process. 
+                     The system includes a secure payment integration, a user-friendly front-end registration form, and a powerful backend dashboard for event organisers to manage and track registrations. 
+                     With a seamless experience for both attendees and organisers, our system ensures a smooth and efficient registration process.
+                  </p>
+                  <div>
+                     <a href="/">Visit Site</a>
+                     <a href="/">Find out More</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+      <article id="panel-4" class="panel full-screen gradient-blue">
+         <div class="container">
+            <div class="row">
+               <div class="col-6">
+                  <img src="" alt="">
+               </div>
+               <div class="col-6 d-flex flex-column">
+                  <h2>KMC Projects</h2>
+                  <p class="step-description">
+                     We built a fully bespoke web application for KMC Projects, incorporating a payment system, backend database, and secure admin login. 
+                     The platform is designed for efficiency, allowing seamless transactions and streamlined management. 
+                     With a user-friendly interface and powerful backend, KMC Projects can operate with full control and scalability.
+                  </p>
+                  <div>
+                     <a href="https://kmc-projects-686d2f98b9c9.herokuapp.com/">Visit Site</a>
+                     <a href="/">Find out More</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+      <article id="panel-5" class="panel full-screen gradient-green">
+         <div class="container">
+            <div class="row">
+               <div class="col-6">
+                  <img src="" alt="">
+               </div>
+               <div class="col-6 d-flex flex-column">
+                  <h2>ColourChange Challenge</h2>
+                  <p class="step-description">
+                     We developed Colour Change Challenge, a fully bespoke web-based game designed for an engaging and interactive user experience. 
+                     Built from the ground up, the game features smooth mechanics, responsive design, and an intuitive interface. 
+                     This project showcases our expertise in creating custom, high-performance web applications that prioritise both functionality and user enjoyment.
+                  </p>
+                  <div>
+                     <a href="https://sarahgoodwin93.github.io/project2-colourchange-challenge/">Visit Site</a>
+                     <a href="/">Find out More</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+      <article id="panel-6" class="panel full-screen gradient-green">
+         <div class="container">
+         <div class="row">
+         <div class="col-6">
+            <img src="" alt="">
+         </div>
+         <div class="col-6 d-flex flex-column">
+            <h2>Bespoke CRM - Tailored Spirits</h2>
+            <p class="step-description">
+               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Including versions of Lorem Ipsum.
+            </p>
+            <div>
+               <a href="https://rokusalon.myshopify.com/?_ab=0&_fd=0&_sc=1">Visit Site</a>
+               <a href="/">Find out More</a>
+            </div>
+         </div>
+      </article>
+   </section>
+   <section id="map" class="full-screen gradient-orange">
+   </section>
+</section>
+<section class="home-cta-section">
+   <div class="a"></div>
+   <div class="b"></div>
+   <div class="c"></div>
+</section>
 {% endblock %}
