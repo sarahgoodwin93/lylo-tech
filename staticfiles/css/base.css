@@ -279,10 +279,6 @@ a {
   color: var(--color-just-black)
 }
 
-.home-buttons-work {
-    display: none;
-}
-
 .panel-1-image {
     background-image: url("{% static 'images/#f3936d.png' %}");
     background-size: cover;
