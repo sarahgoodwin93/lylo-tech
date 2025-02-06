@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
 <section class="comparisonSection">
    <div class="comparisonImage beforeImage">
       <img src="{% static 'images/hero-image.png' %}" alt="hero image">
@@ -33,7 +34,7 @@
                   <br>
                   <div>
                      <a href="https://rokusalon.myshopify.com/?_ab=0&_fd=0&_sc=1">Visit Site</a>
-                     <a href="/">Find out More</a>
+                     <!-- <a href="/">Find out More</a> -->
                   </div>
                </div>
             </div>
@@ -131,5 +132,39 @@
    <div class="a"></div>
    <div class="b"></div>
    <div class="c"></div>
+</section>
+
+<section>
+  <div class="content-wrapper">
+    <h1 class="home-heading">Contact Us</h1>
+    <div class="homepage-box-form">
+        <h2 class="form-heading"></h2>
+        <p>We look forward to working with you!</p>
+            <!-- Contact Form -->
+            <form class="mb-5" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+                {{ form.name.label_tag}}
+                {{ form.name }}
+                {{ form.name.errors}}
+            </p>
+            <p>
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {{ form.email.errors }}
+            </p>
+            <p>
+                {{ form.service_needed.label_tag }}
+                {{ form.service_needed }}
+            </p>
+            <p>
+                {{ form.message.label_tag }}
+                {{ form.message }}
+            </p>
+            <!-- Add Services button -->
+            <input class="btn btn-success" type="submit" name="submit">
+            </form>
+    </div>
+</div>
 </section>
 {% endblock %}

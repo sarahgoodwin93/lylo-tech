@@ -4,4 +4,17 @@ from .models import Contact
 
 
 # Register your models here.
-admin.site.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'user',
+        'email',
+        'service_needed',
+        'message',
+        'created_on',
+    )
+
+    ordering = ('created_on',)
+
+
+admin.site.register(Contact, ContactAdmin)
