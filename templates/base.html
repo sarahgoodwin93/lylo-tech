@@ -21,11 +21,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Adobe Font -->
-    <link rel="stylesheet" href="https://use.typekit.net/qlo3ytp.css">
+    <link rel="stylesheet" href="https://use.typekit.net/znr1bps.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/lylo-favicon.png' %}">
     {% endblock %}
 
     {% block corejs %}
@@ -41,46 +41,6 @@
     <title>LYLO TECH</title>
 </head>
 <body>
-<!-- Logo and Navbar -->
-<header class="container-fluid fixed-top">
-    <div id="topnav" class="row bg-white pt-lg-2">
-        <div class="col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-            <!-- Logo and Tagline -->
-            <a href="{% url 'home' %}">
-                <div class="nav-link main-logo-link">
-                    <img class="logo-img" src="{% static 'images/logo.png' %}" alt="lylo logo image">
-                    <p class="tagline"></p>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-8">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg justify-content-end">
-                <!-- Hamburger Menu for Mobile -->
-                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="fa-solid fa-bars"></span>
-                </button>
-                <!-- Navbar Links -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Home, Services, and Products Links -->
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="/">Work</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == services_url %}active{% endif %}" href="/">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == services_url %}active{% endif %}" href="/">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
-</header>
-
 <main>
     {% block content %}
     {% endblock %}

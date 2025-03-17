@@ -1,170 +1,64 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-{% load crispy_forms_tags %}
-<section class="comparisonSection">
-   <div class="comparisonImage beforeImage">
-      <img src="{% static 'images/hero-image.png' %}" alt="hero image">
-   </div>
-   <div class="comparisonImage afterImage">
-      <img src="{% static 'images/after-hero-image.png' %}" alt="after hero image">
-   </div>
-</section>
-<section>
-   <div id="page" class="site">
-   <div id="content" class="site-content" role="main">
-   <section id="intro" class="full-screen pt-5 gradient-orange">
-      <h1>Our Work</h1>
-   </section>
-   <section id="panels">
-      <div id="panels-container" style="width: 500%;">
-      <article id="panel-1" class="panel full-screen panel-1-image">
-         <div class="container">
-            <div class="row">
-               <div class="col-6">
-                  <img src="{% static 'images/project-roku.png' %}" alt="Roku Salon Screenshot">
-               </div>
-               <div class="col-6 d-flex flex-column">
-                  <h2>Roku Salon</h2>
-                  <p class="step-description">
-                     We built a bespoke Shopify website for ROKU Salon, tailoring the design and functionality to match their premium brand. 
-                     We created custom Shopify sections for a seamless user experience, making it easy for customers to explore services and book appointments. 
-                     By leveraging Shopify’s Liquid templating, we delivered a flexible, high-performing site that ROKU can easily manage and grow with.
-                  </p>
-                  <br>
-                  <div>
-                     <a href="https://rokusalon.myshopify.com/?_ab=0&_fd=0&_sc=1">Visit Site</a>
-                     <!-- <a href="/">Find out More</a> -->
-                  </div>
-               </div>
-            </div>
-         </div>
-      </article>
-      <article id="panel-2" class="panel full-screen gradient-blue">
-         <div class="container">
-            <div class="row">
-               <div class="col-6">
-                <img src="{% static 'images/project-kmc.png' %}" alt="KMC Project Screenshot">
-               </div>
-               <div class="col-6 d-flex flex-column">
-                  <h2>KMC Projects</h2>
-                  <p class="step-description">
-                     We built a fully bespoke web application for KMC Projects, incorporating a payment system, backend database, and secure admin login. 
-                     The platform is designed for efficiency, allowing seamless transactions and streamlined management. 
-                     With a user-friendly interface and powerful backend, KMC Projects can operate with full control and scalability.
-                  </p>
-                  <div>
-                     <a href="https://kmc-projects-686d2f98b9c9.herokuapp.com/">Visit Site</a>
-                     <a href="/">Find out More</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </article>
-      <article id="panel-3" class="panel full-screen gradient-blue">
-        <div class="container">
-           <div class="row">
-              <div class="col-6">
-                <img src="{% static 'images/project-rg.png' %}" alt="RG Rope Screenshot">
-              </div>
-              <div class="col-6 d-flex flex-column">
-                 <h2>RG Rope Solutions</h2>
-                 <p class="step-description">
-                  We built a fully bespoke website for RG Rope Solutions, a leading rope access company. 
-                  The site is designed to showcase their specialist services, ensuring a professional, user-friendly, and mobile-optimised experience. 
-                  With a sleek design and tailored functionality, the website effectively highlights RG Rope Solutions’ expertise and industry reputation.
-                 </p>
-                 <div>
-                    <a href="https://www.rgropesolutions.com/">Visit Site</a>
-                    <a href="/">Find out More</a>
-                 </div>
-              </div>
-           </div>
-        </div>
-     </article>
-     <article id="panel-4" class="panel full-screen gradient-blue">
-      <div class="container">
-         <div class="row">
-            <div class="col-6">
-              <img src="{% static 'images/project-sloe.png' %}" alt="Sloe Screenshot">
-            </div>
-            <div class="col-6 d-flex flex-column">
-               <h2>Sloe Studios</h2>
-               <p class="step-description">
-                We developed a fully bespoke website for Sloe Studios, a creative brand known for its unique, high-quality designs. 
-                The site is built to reflect their artistic vision, offering a visually stunning and immersive user experience. 
-                With custom functionality and a seamless interface, the platform showcases Sloe Studios’ work with elegance and ease.
-               </p>
-               <div>
-                  <a href="https://www.sloestudios.com/">Visit Site</a>
-                  <a href="/">Find out More</a>
-               </div>
-            </div>
-         </div>
-      </div>
-   </article>
-      <article id="panel-5" class="panel full-screen gradient-green">
-         <div class="container">
-            <div class="row">
-               <div class="col-6">
-                <img src="{% static 'images/project-game.png' %}" alt="ColourChange Screenshot">
-               </div>
-               <div class="col-6 d-flex flex-column">
-                  <h2>ColourChange Challenge</h2>
-                  <p class="step-description">
-                     We developed the ColourChange Challenge, a fully bespoke web-based game designed for an engaging and interactive user experience. 
-                     Built from the ground up, the game features smooth mechanics, responsive design, and an intuitive interface. 
-                     This project showcases our expertise in creating custom, high-performance web applications that prioritise both functionality and user enjoyment.
-                  </p>
-                  <div>
-                     <a href="https://sarahgoodwin93.github.io/project2-colourchange-challenge/">Visit Site</a>
-                     <a href="/">Find out More</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </article>
-   </section>
-   <section id="map" class="full-screen gradient-orange">
-   </section>
-</section>
-<section class="home-cta-section">
-   <div class="a"></div>
-   <div class="b"></div>
-   <div class="c"></div>
-</section>
 
-<section>
-  <div class="content-wrapper">
-    <h1 class="home-heading">Contact Us</h1>
-    <div class="homepage-box-form">
-        <h2 class="form-heading"></h2>
-        <p>We look forward to working with you!</p>
-            <!-- Contact Form -->
-            <form class="mb-5" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <p>
-                {{ form.name.label_tag}}
-                {{ form.name }}
-                {{ form.name.errors}}
-            </p>
-            <p>
-                {{ form.email.label_tag }}
-                {{ form.email }}
-                {{ form.email.errors }}
-            </p>
-            <p>
-                {{ form.service_needed.label_tag }}
-                {{ form.service_needed }}
-            </p>
-            <p>
-                {{ form.message.label_tag }}
-                {{ form.message }}
-            </p>
-            <!-- Add Services button -->
-            <input class="btn btn-success" type="submit" name="submit">
-            </form>
-    </div>
+<!-- Animated Logo Container -->
+<div id="logoContainer">
+   <a href="{% url 'home' %}">
+       <div class="nav-link main-logo-link">
+           <img id="logo" class="logo-img" src="{% static 'images/logo.png' %}" alt="lylo logo image">
+       </div>
+   </a>
 </div>
-</section>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+         <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Contact</a></li>
+         </ul>
+   </div>
+</nav>
+
+<!-- Homepage Fixed Images -->
+<div>
+   <img class="image-home-1" src="{% static 'images/photo-example-1.jpeg' %}" alt="photo-example-1">
+</div>
+
+<div>
+   <img class="image-home-2" src="{% static 'images/photo-example-2.jpeg' %}" alt="photo-example-2">
+</div>
+
+<!-- Homepage Tags -->
+<div class="homepage-tag-container">
+   <div class="homepage-tag">
+      <a href="/">
+         <h1>Who we are</h1>
+      </a>
+         <p></p>
+   </div>
+   <div class="homepage-tag">
+      <a href="/">
+         <h1>What we do</h1>
+      </a>
+         <p></p>
+   </div>
+   <div class="homepage-tag">
+      <a href="/">
+         <h1>Let's work together</h1>
+      </a>
+         <p></p>
+   </div>
+</div>
+
+<!-- Lylo Circle -->
+<div class="lylo-circle">
+   <div class="lylo-circle"></div>
+</div>
+
 {% endblock %}

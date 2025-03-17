@@ -19,7 +19,7 @@ def home_page(request):
 class ContactFormView(CreateView):
     """ A view to return the contact page """
     model = Contact
-    template_name = "home/contact.html"
+    template_name = "home.html"
     form_class = ContactForm
     success_url = reverse_lazy("home")
 
@@ -47,7 +47,7 @@ def is_superuser(user):
 class ContactListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     """ A view to show the admin a list of who has contacted them """
     model = Contact
-    template_name = 'home/contact_list.html'
+    template_name = 'contact_list.html'
     context_object_name = 'contacts'
 
     def test_func(self):
