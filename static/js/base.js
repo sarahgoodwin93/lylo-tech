@@ -1,64 +1,111 @@
 // Lylo Circle
 document.addEventListener("DOMContentLoaded", function () {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-    gsap.to(".lylo-circle", {
-        x: "-90vw", // Moves left
-        y: "50vh", // Moves down
-        rotation: 360,
-        ease: "power1.out",
+    // Create a GSAP timeline with scrollTrigger
+    let tl = gsap.timeline({
         scrollTrigger: {
-            trigger: ".project-details-roku",
+            trigger: ".project-details-first",
             start: "top bottom",
-            end: "top center",
-            scrub: true,
-			immediateRender: false
+            end: "top 20%",
+            scrub: 3,
+            immediateRender: false,
         }
     });
+
+    // First movement: Move left and down
+    tl.to(".lylo-circle", {
+        x: "-90vw", 
+        y: "50vh", 
+        rotation: 360,
+        ease: "power1.out"
+    });
+
+    // Second movement: Follow a curved path with slower transition
+    tl.to(".lylo-circle", {
+        motionPath: {
+            path: [
+				{ x: "-90vw", y: "50vh" },
+				{ x: "-90vw", y: "50.5vh" },
+				{ x: "-80vw", y: "50.7vh" },
+				{ x: "-75vw", y: "51vh" },
+				{ x: "-72vw", y: "55vh" },
+				{ x: "-71vw", y: "65vh" },
+				{ x: "-70.5vw", y: "75vh" },
+				{ x: "-70vw", y: "90vh" }
+			],
+            curviness: 1.5, 
+            autoRotate: false
+        },
+        ease: "power2.out"
+    });
+
+	// **Bounce effect at the end**
+	tl.to(".lylo-circle", {
+		y: "93vh", // Small bounce downward
+		duration: 0.3, 
+		ease: "power2.inOut",
+		repeat: 6, // Number of bounces
+		yoyo: true // Moves back up after each bounce
+	});
+
+	// **Reverse Motion - Moves back up when scrolling back up**
+	tl.to(".lylo-circle", {
+		motionPath: {
+			path: [
+				{ x: "-70vw", y: "90vh" },  
+				{ x: "-70.5vw", y: "75vh" },  
+				{ x: "-71vw", y: "65vh" },  
+				{ x: "-72vw", y: "55vh" },  
+				{ x: "-75vw", y: "51vh" },  
+				{ x: "-80vw", y: "50.7vh" }, 
+				{ x: "-85vw", y: "50.5vh" }, 
+				{ x: "-90vw", y: "50vh" }  // Returns to start position
+			],
+			curviness: 2, 
+			autoRotate: false
+		},
+		ease: "power2.out"
+	});
 });
 
 
-// Change background colour Roku
+// Change background colours
 $(document).ready(function() {
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
 
-        var imageBottom = 0;
-        var sectionBottom = 0;
+        var imageBottom = $(".image-home-2").length ? $(".image-home-2").offset().top + $(".image-home-2").outerHeight() : 0;
+        var firstColorChange = $(".colorChangeFirstPoint").length ? $(".colorChangeFirstPoint").offset().top + $(".colorChangeFirstPoint").outerHeight() : 0;
+        var secondColorChange = $(".colorChangeSecondPoint").length ? $(".colorChangeSecondPoint").offset().top + $(".colorChangeSecondPoint").outerHeight() : 0;
+        var thirdColorChange = $(".colorChangeThirdPoint").length ? $(".colorChangeThirdPoint").offset().top + $(".colorChangeThirdPoint").outerHeight() : 0;
+        var fourthColorChange = $(".colorChangeFourthPoint").length ? $(".colorChangeFourthPoint").offset().top + $(".colorChangeFourthPoint").outerHeight() : 0;
 
-        // Check if .image-home-2 exists before using offset()
-        if ($(".image-home-2").length) {
-            imageBottom = $(".image-home-2").offset().top + $(".image-home-1").outerHeight();
-        } else {
-            console.warn("Warning: .image-home-2 not found!");
-        }
-
-        // Check if .colorChangeKMCPoint exists before using offset()
-        if ($(".colorChangeKMCPoint").length) {
-            sectionBottom = $(".colorChangeKMCPoint").offset().top + $(".colorChangeKMCPoint").outerHeight();
-        } else {
-            console.warn("Warning: .colorChangeKMCPoint not found!");
-        }
-
-        console.log("Scroll Position:", scrollTop);
-        console.log("Image Bottom:", imageBottom);
-        console.log("Section Bottom:", sectionBottom);
-
-        // Change background and text color when .image-home-2 is out of viewport
-        if (scrollTop >= imageBottom && scrollTop < sectionBottom) {
-            $('body').addClass('changeColorPink').removeClass('changeColorGreen');
-            $('.project-details-roku').addClass('textColorChangeMoron').removeClass('textColorChangeBeige');
+        // First section: Pink
+        if (scrollTop >= imageBottom && scrollTop < firstColorChange) {
+            $('body').addClass('changeColorPink').removeClass('changeColorGreen changeColorLightGreen changeColorBlue');
+            $('.project-details-first').addClass('textColorChangeMoron').removeClass('textColorChangeBeige');
         } 
-        // Change background for KMC section
-        else if (scrollTop >= sectionBottom) {
-            $('body').addClass('changeColorGreen').removeClass('changeColorPink');
-            $('.project-details-kmc').addClass('textColorChangeBeige').removeClass('textColorChangeMoron');
+        // Second section: Green
+        else if (scrollTop >= firstColorChange && scrollTop < secondColorChange) {
+            $('body').addClass('changeColorGreen').removeClass('changeColorPink changeColorLightGreen changeColorBlue');
+            $('.project-details-second').addClass('textColorChangeBeige').removeClass('textColorChangeMoron');
         } 
-        // Reset to default if scrolled above
+        // Third section: Light Green
+        else if (scrollTop >= secondColorChange && scrollTop < thirdColorChange) {
+            $('body').addClass('changeColorLightGreen').removeClass('changeColorPink changeColorGreen changeColorBlue');
+            $('.project-details-third').addClass('textColorChangeGreen').removeClass('textColorChangeBeige');
+        } 
+        // Fourth section: Blue
+        else if (scrollTop >= thirdColorChange) {
+            $('body').addClass('changeColorBlue').removeClass('changeColorPink changeColorGreen changeColorLightGreen');
+            $('.project-details-fourth').addClass('textColorChangeMoron').removeClass('textColorChangeBeige');
+        } 
+        // Reset if above first section
         else {
-            $('body').removeClass('changeColorPink changeColorGreen');
-            $('.project-details-roku').removeClass('textColorChangeMoron');
-            $('.project-details-kmc').removeClass('textColorChangeBeige');
+            $('body').removeClass('changeColorPink changeColorGreen changeColorLightGreen changeColorBlue');
+            $('.project-details-first, .project-details-second, .project-details-third, .project-details-fourth')
+                .removeClass('textColorChangeMoron textColorChangeBeige textColorChangeGreen');
         }
     });
 });
