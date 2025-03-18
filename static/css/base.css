@@ -15,12 +15,36 @@ html, body {
     display: flex;
     flex-direction: column;
     background-color: #490f1c;
+    transition: 0.3s background-color;
 }
 
 /* Main content area */
 main {
     flex: 1;
 }
+
+/* Background color changes */
+body.changeColorPink {
+  background-color: #f4b6d2;
+  transition: background-color 0.5s ease;
+}
+
+body.changeColorGreen {
+  background-color: #178747;
+  transition: background-color 0.5s ease;
+}
+
+/* Text color changes */
+.project-details-roku.textColorChangeMoron {
+  color: #490f1c;
+  transition: color 0.5s ease;
+}
+
+.project-details-kmc.textColorChangeBeige {
+  color: #fffff4;
+  transition: color 0.5s ease;
+}
+
 
 /* --- Logo Positioning --- */
 #logoContainer {
@@ -121,13 +145,13 @@ main {
   transform: translateX(-50%);
   width: 50px;
   height: 50px; 
-  background-color: #d0e5ed;  /* Add background color */
-  border-radius: 50%; /* Make it a circle */
+  background-color: #d0e5ed;
+  border-radius: 50%;
 }
 
 /* Project Section */
 
-.project-details {
+.project-details-roku {
   position: absolute;
   top: 150%;
   left: 5%;
@@ -136,7 +160,7 @@ main {
   line-height: 1;
 }
 
-.project-image {
+.project-image-roku {
   position: absolute;
   top: 150%;
   left: 70%;
@@ -146,3 +170,26 @@ main {
   background: #fffff4;
   border-radius: 20px;
 }
+
+/* Project Section */
+
+.project-details-kmc {
+  position: absolute;
+  top: 250%;
+  left: 5%;
+  color: #d0e5ed;
+  max-width: 40%;
+  line-height: 1;
+}
+
+.project-image-kmc {
+  position: absolute;
+  top: 250%;
+  left: 70%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 80%;
+  background: #fffff4;
+  border-radius: 20px;
+}
+
