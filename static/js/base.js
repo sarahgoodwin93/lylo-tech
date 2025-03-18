@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         x: "-90vw", 
         y: "50vh", 
         rotation: 360,
+		duration: 2.5,
         ease: "power1.out"
     });
 
@@ -37,13 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
             curviness: 1.5, 
             autoRotate: false
         },
+		duration: 4,
         ease: "power2.out"
     });
 
 	// **Bounce effect at the end**
 	tl.to(".lylo-circle", {
 		y: "93vh", // Small bounce downward
-		duration: 0.3, 
+		duration: 0.5, 
 		ease: "power2.inOut",
 		repeat: 6, // Number of bounces
 		yoyo: true // Moves back up after each bounce
@@ -65,7 +67,15 @@ document.addEventListener("DOMContentLoaded", function () {
 			curviness: 2, 
 			autoRotate: false
 		},
+		duration: 2.5,
 		ease: "power2.out"
+	});
+
+	// Move off-screen to the left
+	tl.to(".lylo-circle", {
+		x: "-120vw", // Move far left off the screen
+		duration: 1.5, 
+		ease: "power2.inOut"
 	});
 });
 
