@@ -2,7 +2,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-    // Create a GSAP timeline with scrollTrigger
     let tl = gsap.timeline({
         scrollTrigger: {
             trigger: ".project-details-first",
@@ -18,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         x: "-90vw", 
         y: "50vh", 
         rotation: 360,
-		duration: 2.5,
+        duration: 2.5,
         ease: "power1.out"
     });
 
@@ -26,59 +25,81 @@ document.addEventListener("DOMContentLoaded", function () {
     tl.to(".lylo-circle", {
         motionPath: {
             path: [
-				{ x: "-90vw", y: "50vh" },
-				{ x: "-90vw", y: "50.5vh" },
-				{ x: "-80vw", y: "50.7vh" },
-				{ x: "-75vw", y: "51vh" },
-				{ x: "-72vw", y: "55vh" },
-				{ x: "-71vw", y: "65vh" },
-				{ x: "-70.5vw", y: "75vh" },
-				{ x: "-70vw", y: "90vh" }
-			],
+                { x: "-90vw", y: "50vh" },
+                { x: "-90vw", y: "50.5vh" },
+                { x: "-70vw", y: "50.7vh" },
+                { x: "-65vw", y: "51vh" },
+                { x: "-62vw", y: "55vh" },
+                { x: "-61vw", y: "65vh" },
+                { x: "-60.5vw", y: "75vh" },
+                { x: "-60vw", y: "90vh" }
+            ],
             curviness: 1.5, 
             autoRotate: false
         },
-		duration: 4,
+        duration: 4,
         ease: "power2.out"
     });
 
-	// **Bounce effect at the end**
-	tl.to(".lylo-circle", {
-		y: "93vh", // Small bounce downward
-		duration: 0.5, 
-		ease: "power2.inOut",
-		repeat: 6, // Number of bounces
-		yoyo: true // Moves back up after each bounce
-	});
+    // **Bounce effect at the end**
+    tl.to(".lylo-circle", {
+        y: "93vh", 
+        duration: 0.5, 
+        ease: "power2.inOut",
+        repeat: 6,
+        yoyo: true
+    });
 
-	// **Reverse Motion - Moves back up when scrolling back up**
-	tl.to(".lylo-circle", {
-		motionPath: {
-			path: [
-				{ x: "-70vw", y: "90vh" },  
-				{ x: "-70.5vw", y: "75vh" },  
-				{ x: "-71vw", y: "65vh" },  
-				{ x: "-72vw", y: "55vh" },  
-				{ x: "-75vw", y: "51vh" },  
-				{ x: "-80vw", y: "50.7vh" }, 
-				{ x: "-85vw", y: "50.5vh" }, 
-				{ x: "-90vw", y: "50vh" }  // Returns to start position
-			],
-			curviness: 2, 
-			autoRotate: false
-		},
-		duration: 2.5,
-		ease: "power2.out"
-	});
+    // **Reverse Motion - Moves back up**
+    tl.to(".lylo-circle", {
+        motionPath: {
+            path: [
+                { x: "-60vw", y: "90vh" },  
+                { x: "-60.5vw", y: "75vh" },  
+                { x: "-61vw", y: "65vh" },  
+                { x: "-62vw", y: "55vh" },  
+                { x: "-65vw", y: "51vh" },  
+                { x: "-70vw", y: "50.7vh" }, 
+                { x: "-85vw", y: "50.5vh" }, 
+                { x: "-90vw", y: "50vh" }  
+            ],
+            curviness: 2, 
+            autoRotate: false
+        },
+        duration: 2.5,
+        ease: "power2.out"
+    });
 
-	// Move off-screen to the left
-	tl.to(".lylo-circle", {
-		x: "-120vw", // Move far left off the screen
-		duration: 1.5, 
-		ease: "power2.inOut"
-	});
+    // Move off-screen to the left
+    tl.to(".lylo-circle", {
+        x: "-120vw", 
+        duration: 1.5, 
+        ease: "power2.inOut"
+    });
 });
 
+
+// Second Circle
+document.addEventListener("DOMContentLoaded", function () {
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+    // **New animation: Reappearing and moving across**
+    let newTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".colorChangeFirstPoint",
+            start: "top top",
+            end: "bottom top", // Allows movement back on scroll up
+            scrub: 5, // Makes movement smooth in both directions
+        }
+    });
+
+    // Move across the screen from right to left
+    newTl.to(".lylo-circle-2", {
+        x: "-120vw",
+        duration: 5,
+        ease: "power2.inOut",
+    });
+});
 
 // Change background colours
 $(document).ready(function() {

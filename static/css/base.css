@@ -166,6 +166,17 @@ body.changeColorBlue {
   border-radius: 50%;
 }
 
+.lylo-circle-2 {
+  position: absolute;
+  top: 240%;
+  left: 97%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px; 
+  background-color: #d0e5ed;
+  border-radius: 50%;
+}
+
 /* Project Section - First - Pink */
 
 .project-details-first {
