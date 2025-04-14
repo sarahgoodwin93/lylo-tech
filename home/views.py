@@ -30,4 +30,9 @@ def WhatWeDoView(request):
     return render (request, 'whatwedo.html')
 
 
+# Behind the build page.
+def BehindTheBuildView(request):
+    return render (request, 'behindthebuild.html')
+
+
 

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+body {
+  background-color: #afe56a;
+  overflow: hidden;
+}
+
+h1 {
+  color: pink;
+}
+
+</style>
+
+<a class="nav-link" href="{% url 'home' %}">
+  <h1>Home</h1>
+</a>
+
+<div class="circle"></div>
+{% endblock %}
