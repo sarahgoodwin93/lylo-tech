@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
             trigger: ".project-details-first",
             start: "top bottom",
-            end: "top 20%",
+            end: "+=2000",
             scrub: 3,
             immediateRender: false,
         }
@@ -39,15 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         duration: 4,
         ease: "power2.out"
-    });
-
-    // **Bounce effect at the end**
-    tl.to(".lylo-circle", {
-        y: "93vh", 
-        duration: 0.5, 
-        ease: "power2.inOut",
-        repeat: 6,
-        yoyo: true
     });
 
     // **Reverse Motion - Moves back up**
@@ -83,13 +74,13 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-    // **New animation: Reappearing and moving across**
+    // Start second circle trigger
     let newTl = gsap.timeline({
         scrollTrigger: {
             trigger: ".colorChangeFirstPoint",
             start: "top top",
-            end: "bottom top", // Allows movement back on scroll up
-            scrub: 5, // Makes movement smooth in both directions
+            end: "+=400",
+            scrub: 5, 
         }
     });
 

@@ -15,6 +15,16 @@ def home_page(request):
     return render (request, 'home.html')
 
 
+# Create your views here.
+def ScrollingView(request):
+    return render (request, 'scrolling.html')
+
+
+# Create your views here.
+def HomeTwoView(request):
+    return render (request, 'home2.html')
+
+
 # Contact Form View
 class ContactFormView(CreateView):
     """ A view to return the contact page """
@@ -52,3 +62,4 @@ class ContactListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
 
     def test_func(self):
         return self.request.user.is_superuser
+
