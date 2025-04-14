@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+body {
+  background-color: #490F1C;
+  overflow: hidden;
+}
+
+h1 {
+  color: pink;
+}
+
+</style>
+
+<div class="scrolling-text">
+  <h1 class="coming-soon"></h1>Hello World</h1>
+</div>
+
+<a class="nav-link" href="{% url 'home' %}">
+  <h1>Home</h1>
+</a>
+
+<div class="circle"></div>
+{% endblock %}

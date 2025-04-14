@@ -15,45 +15,42 @@
 <section>
    <!-- WHO WE ARE -->
    <a class="nav-link" href="{% url 'scrolling' %}">
-      <div class="light-green-box box-sway">
+      <div class="light-green-box box-sway box-transition">
       <h1>WHO WE ARE</h1>
       </div>
    </a>
    
    <!-- WHAT WE DO -->
-   <a class="nav-link" href="{% url 'hometwo' %}">
-      <div class="dark-green-box box-sway">
+   <a class="nav-link" href="{% url 'scrolling' %}">
+      <div class="dark-green-box box-sway box-transition">
       <h1>WHAT WE DO</h1>
       </div>
    </a>
    
    <!-- WORK WITH US (Dark) -->
    <a class="nav-link" href="{% url 'scrolling' %}">
-      <div class="burgundy-box box-sway">
-      <h1>WORK WITH US</h1>
+      <div class="burgundy-box box-sway box-transition">
+        <h1>WORK WITH US</h1>
       </div>
-   </a>
+    </a>    
    
    <!-- WORK WITH US (Light) -->
    <a class="nav-link" href="{% url 'scrolling' %}">
-      <div class="blue-circle-box box-sway">
+      <div class="blue-circle-box box-sway box-transition">
       <h1>WORK WITH US</h1>
       </div>
    </a>
    
    <!-- FIND OUT MORE -->
-   <a class="nav-link" href="{% url 'scrolling' %}">
+   <a class="nav-link" href="#lylo-circle">
       <div id="pink-section" class="pink-box box-sway">
       <h1>FIND OUT MORE</h1>
       </div>
    </a>
 </section>
 
-<!-- Lylo Circle -->
-<div class="lylo-circle"></div>
-
 <!-- First Project -->
-<section class="project-section-first">
+<section id="first-project" class="project-section-first">
    <div class="project-details-first">
       <h1>Roku Salon</h1>
       <h2>Stack</h2>
@@ -74,6 +71,9 @@
       <div class="project-image-first"></div>
    </div>
 </section>
+
+<!-- Lylo Circle -->
+<div id="lylo-circle" class="lylo-circle"></div>
 
 <!-- Lylo Circle -->
 <div class="lylo-circle-2"></div>
@@ -147,4 +147,51 @@
 <div>
 
 </div>
+
+<script>
+document.querySelectorAll('.box-transition').forEach(box => {
+    box.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetUrl = box.closest('a').getAttribute('href');
+        const rect = box.getBoundingClientRect();
+
+        // Store a flag so we can reset on the homepage
+        sessionStorage.setItem('boxTransitionInProgress', 'true');
+
+        // Freeze position
+        box.style.position = 'fixed';
+        box.style.top = `${rect.top}px`;
+        box.style.left = `${rect.left}px`;
+        box.style.width = `${rect.width}px`;
+        box.style.height = `${rect.height}px`;
+        box.style.margin = 0;
+
+        // Trigger layout
+        box.offsetHeight;
+
+        // Grow animation
+        box.classList.add('box-grow');
+
+        setTimeout(() => {
+            window.location.href = targetUrl;
+        }, 600);
+    });
+});
+
+// Reset boxes if transition was in progress
+document.addEventListener('DOMContentLoaded', () => {
+    const wasTransitioning = sessionStorage.getItem('boxTransitionInProgress');
+
+    if (wasTransitioning) {
+        // Remove the transition class from all boxes
+        document.querySelectorAll('.box-transition').forEach(box => {
+            box.classList.remove('box-grow');
+            box.removeAttribute('style'); // remove inline styles
+        });
+
+        sessionStorage.removeItem('boxTransitionInProgress');
+    }
+});
+</script>
 {% endblock %}
