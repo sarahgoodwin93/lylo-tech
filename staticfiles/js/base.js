@@ -1,114 +1,133 @@
-// Horizonal Scroll Image
-gsap.utils.toArray(".comparisonSection").forEach(section => {
-	let tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: section,
-				start: "center center",
-        // makes the height of the scrolling (while pinning) match the width, 
-        // thus the speed remains constant (vertical/horizontal)
-				end: () => "+=" + section.offsetWidth, 
-				scrub: true,
-				pin: true,
-        anticipatePin: 1
-			},
-			defaults: {ease: "none"}
-		});
-	// animate the container one way...
-	tl.fromTo(section.querySelector(".afterImage"), { xPercent: 100, x: 0}, {xPercent: 0})
-	  // ...and the image the opposite way (at the same time)
-	  .fromTo(section.querySelector(".afterImage img"), {xPercent: -100, x: 0}, {xPercent: 0}, 0);
+// Lylo Circle
+document.addEventListener("DOMContentLoaded", function () {
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".project-details-first",
+            start: "top bottom",
+            end: "+=2000",
+            scrub: 3,
+            immediateRender: false,
+        }
+    });
+
+    // First movement: Move left and down
+    tl.to(".lylo-circle", {
+        x: "-90vw", 
+        y: "50vh", 
+        rotation: 360,
+        duration: 2.5,
+        ease: "power1.out"
+    });
+
+    // Second movement: Follow a curved path with slower transition
+    tl.to(".lylo-circle", {
+        motionPath: {
+            path: [
+                { x: "-90vw", y: "50vh" },
+                { x: "-90vw", y: "50.5vh" },
+                { x: "-70vw", y: "50.7vh" },
+                { x: "-65vw", y: "51vh" },
+                { x: "-62vw", y: "55vh" },
+                { x: "-61vw", y: "65vh" },
+                { x: "-60.5vw", y: "75vh" },
+                { x: "-60vw", y: "90vh" }
+            ],
+            curviness: 1.5, 
+            autoRotate: false
+        },
+        duration: 4,
+        ease: "power2.out"
+    });
+
+    // **Reverse Motion - Moves back up**
+    tl.to(".lylo-circle", {
+        motionPath: {
+            path: [
+                { x: "-60vw", y: "90vh" },  
+                { x: "-60.5vw", y: "75vh" },  
+                { x: "-61vw", y: "65vh" },  
+                { x: "-62vw", y: "55vh" },  
+                { x: "-65vw", y: "51vh" },  
+                { x: "-70vw", y: "50.7vh" }, 
+                { x: "-85vw", y: "50.5vh" }, 
+                { x: "-90vw", y: "50vh" }  
+            ],
+            curviness: 2, 
+            autoRotate: false
+        },
+        duration: 2.5,
+        ease: "power2.out"
+    });
+
+    // Move off-screen to the left
+    tl.to(".lylo-circle", {
+        x: "-120vw", 
+        duration: 1.5, 
+        ease: "power2.inOut"
+    });
 });
 
-// Boxes A
-gsap.registerPlugin(ScrollTrigger);
 
-gsap.to(".a", {
-    scrollTrigger: {
-        trigger: ".a",
-        start: "top center",
-        end: () => `+=${window.innerHeight}`,
-        toggleActions: "restart pause reverse pause",
-        scrub: 1
-    },
-    x: () => window.innerWidth,
-    rotation: 360,
-    duration: 3
+// Second Circle
+document.addEventListener("DOMContentLoaded", function () {
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+    // Start second circle trigger
+    let newTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".colorChangeFirstPoint",
+            start: "top top",
+            end: "+=400",
+            scrub: 5, 
+        }
+    });
+
+    // Move across the screen from right to left
+    newTl.to(".lylo-circle-2", {
+        x: "-120vw",
+        duration: 5,
+        ease: "power2.inOut",
+    });
 });
 
-// Boxes B
-gsap.registerPlugin(ScrollTrigger);
+// Change background colours
+$(document).ready(function() {
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
 
-gsap.to(".b", {
-    scrollTrigger: {
-        trigger: ".b",
-        start: "top center",
-        end: () => `+=${window.innerHeight}`,
-        toggleActions: "restart pause reverse pause",
-        scrub: 1
-    },
-    x: () => window.innerWidth,
-    rotation: 360,
-    duration: 3
-});
+        var imageBottom = $(".image-home-2").length ? $(".image-home-2").offset().top + $(".image-home-2").outerHeight() : 0;
+        var firstColorChange = $(".colorChangeFirstPoint").length ? $(".colorChangeFirstPoint").offset().top + $(".colorChangeFirstPoint").outerHeight() : 0;
+        var secondColorChange = $(".colorChangeSecondPoint").length ? $(".colorChangeSecondPoint").offset().top + $(".colorChangeSecondPoint").outerHeight() : 0;
+        var thirdColorChange = $(".colorChangeThirdPoint").length ? $(".colorChangeThirdPoint").offset().top + $(".colorChangeThirdPoint").outerHeight() : 0;
+        var fourthColorChange = $(".colorChangeFourthPoint").length ? $(".colorChangeFourthPoint").offset().top + $(".colorChangeFourthPoint").outerHeight() : 0;
 
-// Boxes C
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.to(".c", {
-    scrollTrigger: {
-        trigger: ".c",
-        start: "top center",
-        end: () => `+=${window.innerHeight}`,
-        toggleActions: "restart pause reverse pause",
-        scrub: 1
-    },
-    x: () => window.innerWidth,
-    rotation: 360,
-    duration: 3
-});
-
-// Horizontal Panels
-gsap.registerPlugin(ScrollTrigger);
-
-/* Main navigation */
-let panelsSection = document.querySelector("#panels"),
-	panelsContainer = document.querySelector("#panels-container"),
-	tween;
-document.querySelectorAll(".anchor").forEach(anchor => {
-	anchor.addEventListener("click", function(e) {
-		e.preventDefault();
-		let targetElem = document.querySelector(e.target.getAttribute("href")),
-			y = targetElem;
-		if (targetElem && panelsContainer.isSameNode(targetElem.parentElement)) {
-			let totalScroll = tween.scrollTrigger.end - tween.scrollTrigger.start,
-				totalMovement = (panels.length - 1) * targetElem.offsetWidth;
-			y = Math.round(tween.scrollTrigger.start + (targetElem.offsetLeft / totalMovement) * totalScroll);
-		}
-		gsap.to(window, {
-			scrollTo: {
-				y: y,
-				autoKill: false
-			},
-			duration: 1
-		});
-	});
-});
-
-/* Panels */
-const panels = gsap.utils.toArray("#panels-container .panel");
-tween = gsap.to(panels, {
-	xPercent: -100 * ( panels.length - 1 ),
-	ease: "none",
-	scrollTrigger: {
-		trigger: "#panels-container",
-		pin: true,
-		start: "top top",
-		scrub: 1,
-		snap: {
-			snapTo: 1 / (panels.length - 1),
-			inertia: false,
-			duration: {min: 0.1, max: 0.1}
-		},
-		end: () =>  "+=" + (panelsContainer.offsetWidth - innerWidth)
-	}
+        // First section: Pink
+        if (scrollTop >= imageBottom && scrollTop < firstColorChange) {
+            $('body').addClass('changeColorPink').removeClass('changeColorGreen changeColorLightGreen changeColorBlue');
+            $('.project-details-first').addClass('textColorChangeMoron').removeClass('textColorChangeBeige');
+        } 
+        // Second section: Green
+        else if (scrollTop >= firstColorChange && scrollTop < secondColorChange) {
+            $('body').addClass('changeColorGreen').removeClass('changeColorPink changeColorLightGreen changeColorBlue');
+            $('.project-details-second').addClass('textColorChangeBeige').removeClass('textColorChangeMoron');
+        } 
+        // Third section: Light Green
+        else if (scrollTop >= secondColorChange && scrollTop < thirdColorChange) {
+            $('body').addClass('changeColorLightGreen').removeClass('changeColorPink changeColorGreen changeColorBlue');
+            $('.project-details-third').addClass('textColorChangeGreen').removeClass('textColorChangeBeige');
+        } 
+        // Fourth section: Blue
+        else if (scrollTop >= thirdColorChange) {
+            $('body').addClass('changeColorBlue').removeClass('changeColorPink changeColorGreen changeColorLightGreen');
+            $('.project-details-fourth').addClass('textColorChangeMoron').removeClass('textColorChangeBeige');
+        } 
+        // Reset if above first section
+        else {
+            $('body').removeClass('changeColorPink changeColorGreen changeColorLightGreen changeColorBlue');
+            $('.project-details-first, .project-details-second, .project-details-third, .project-details-fourth')
+                .removeClass('textColorChangeMoron textColorChangeBeige textColorChangeGreen');
+        }
+    });
 });
