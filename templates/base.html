@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Adobe Font -->
     <link rel="stylesheet" href="https://use.typekit.net/znr1bps.css">
+    <!-- Tailwind CSS CDN (for development use only) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <!-- Favicon -->
@@ -47,11 +49,11 @@
 </main>
 
 {% block extra_js %}
-    <!-- Font Awesome Script -->
     <script src="https://kit.fontawesome.com/17e7a6d47c.js" crossorigin="anonymous"></script>
     <script src="https://assets.codepen.io/16327/gsap-latest-beta.min.js?r=v3.11.3"></script>
     <script src="https://assets.codepen.io/16327/ScrollTrigger.min.js"></script>
     <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/landing.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

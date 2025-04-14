@@ -264,3 +264,45 @@ body.changeColorBlue {
   background: #fffff4;
   border-radius: 20px;
 }
+
+/* Homepage Boxes */
+
+.light-green-box {
+  width: 484.28px;
+  height: 519.5px;
+  background-color: #afe56a;
+  clip-path: polygon(73% 0, 0 80%, 91% 100%);
+}
+
+.dark-green-box {
+  width: 406px;
+  height: 531px;
+  background-color: #178747;
+}
+
+.burgundy-box {
+  width: 478px;
+  height: 478px;
+  background-color: #490f1c;
+}
+
+.pink-box {
+  width: 666px;
+  height: 313px;
+  background-color: #f4b6d2;
+}
+
+.blue-circle-box {
+  width: 471px;
+  height: 471px;
+  background-color: #d0e5ed;
+  border-radius: 50;
+}
+
+.box-sway {
+
+}
+
+.box-grow-on-click {
+
+}
