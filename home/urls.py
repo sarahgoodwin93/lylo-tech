@@ -1,13 +1,6 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
-from .views import (
-    ContactFormView,
-    ContactListView,
-    WorkWithUsView,
-    WhoWeAreView,
-    WhatWeDo,
-)
 
 urlpatterns = [
     path('', views.home_page, name="home"),
