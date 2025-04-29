@@ -1,18 +1,13 @@
 from django import forms
-from .models import Contact
+from .models import Contact, ContactMessage
 
-
-# Contact form for businesses to register interest.
-class ContactForm(forms.ModelForm):
-    """
-    FORM: Contact.
-    """
-
+class ContactMessageForm(forms.ModelForm):
     class Meta:
-        model = Contact
-        fields = [
-            "name",
-            "email",
-            "service_needed",
-            "message",
-        ]
+        model = ContactMessage
+        fields = ['name', 'company', 'business', 'message']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Your Name'}),
+            'company': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Company'}),
+            'business': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Type of Business'}),
+            'message': forms.Textarea(attrs={'class': 'form-input', 'placeholder': 'Your Message'}),
+        }

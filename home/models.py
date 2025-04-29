@@ -33,3 +33,15 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
 
+
+# Contact Model
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100)
+    company = models.CharField(max_length=100)
+    business = models.CharField(max_length=100)
+    message = models.TextField()
+
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} from {self.company}"

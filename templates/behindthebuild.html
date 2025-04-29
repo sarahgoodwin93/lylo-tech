@@ -3,20 +3,106 @@
 {% load static %}
 
 <style>
-body {
-  background-color: #d0e5ed;;
-  overflow: hidden;
-}
-
-h1 {
-  color: pink;
-}
+  body {
+    background-color: #d0e5ed;;
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'mr-eaves-xl-modern';
+  }
+  
+  /* Top Navigation */
+  .navigation {
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    padding: 20px 40px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .nav-link {
+    color: #481821;
+    text-decoration: none;
+  }
+  
+  /* Page Title */
+  .page-title {
+    text-align: center;
+    font-size: 64px;
+    font-weight: bold;
+    color: #481821;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+  
+  /* Info Blocks */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    padding: 0 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .info-block {
+    background-color: #fffff4;
+    padding: 30px 25px;
+    border-radius: 12px;
+    color: #481821;
+    z-index: 1;
+  }
+  
+  .info-block h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .info-block p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  /* Circle (bottom right) */
+  .circle {
+    width: 50px;
+    height: 50px;
+    background-color: #fffff4;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+  }
 
 </style>
 
-<a class="nav-link" href="{% url 'home' %}">
-  <h1>Home</h1>
-</a>
+<div id="logoContainer">
+  <a href="{% url 'home' %}">
+      <div class="nav-link main-logo-link">
+          <img id="logo" class="logo-img" src="{% static 'images/lylo-b-logo.svg' %}" alt="lylo logo image">
+      </div>
+  </a>
+</div>
 
-<div class="circle"></div>
+<main class="main-content">
+  <nav class="navigation">
+    <a href="{% url 'home' %}" class="nav-link">HOME</a>
+    <a href="{% url 'whatwedo' %}" class="nav-link">WHAT WE DO</a>
+    <a href="{% url 'workwithus' %}" class="nav-link">WORK WITH US</a>
+  </nav>
+
+  <h1 class="page-title">BEHIND THE BUILD</h1>
+
+  <div class="info-grid">
+    <div class="info-block">
+      <h2>COMING SOON</h2>
+    </div>
+
+  <div class="circle"></div>
+</main>
 {% endblock %}

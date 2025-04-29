@@ -3,8 +3,8 @@ from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from .models import Contact
-from .forms import ContactForm
+from .models import Contact, ContactMessage
+from .forms import ContactMessageForm
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -17,7 +17,19 @@ def home_page(request):
 
 # Work with us page.
 def WorkWithUsView(request):
-    return render (request, 'workwithus.html')
+    submitted = False
+
+    if request.method == 'POST':
+        form = ContactMessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            submitted = True
+            form = ContactMessageForm()  # Clear the form
+
+    else:
+        form = ContactMessageForm()
+
+    return render(request, 'workwithus.html', {'form': form, 'submitted': submitted})
 
 
 # Who we are page.
