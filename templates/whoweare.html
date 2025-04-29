@@ -5,18 +5,122 @@
 <style>
 body {
   background-color: #afe56a;
-  overflow: hidden;
+  margin: 0;
+  overflow-x: hidden;
+  position: relative;
 }
 
-h1 {
-  color: pink;
+h1, h2, h3 {
+  font-family: 'mr-eaves-xl-modern';
 }
 
+/* Top Navigation */
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  padding: 20px 40px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nav-link {
+  color: #481821;
+  text-decoration: none;
+}
+
+/* Page Title */
+.page-title {
+  text-align: center;
+  font-size: 64px;
+  font-weight: bold;
+  color: #481821;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+/* Info Blocks */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  padding: 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.info-block {
+  background-color: #fffff4;
+  padding: 30px 25px;
+  border-radius: 12px;
+  color: #481821;
+  z-index: 1;
+}
+
+.info-block h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.info-block p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Circle (bottom right) */
+.circle {
+  width: 50px;
+  height: 50px;
+  background-color: #fffff4;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
 </style>
 
-<a class="nav-link" href="{% url 'home' %}">
-  <h1>Home</h1>
-</a>
+<div id="logoContainer">
+  <a href="{% url 'home' %}">
+      <div class="nav-link main-logo-link">
+          <img id="logo" class="logo-img" src="{% static 'images/lylo-b-logo.svg' %}" alt="lylo logo image">
+      </div>
+  </a>
+</div>
 
-<div class="circle"></div>
+<main class="main-content">
+  <nav class="navigation">
+    <a href="{% url 'home' %}" class="nav-link">HOME</a>
+    <a href="{% url 'whatwedo' %}" class="nav-link">WHAT WE DO</a>
+    <a href="{% url 'workwithus' %}" class="nav-link">WORK WITH US</a>
+  </nav>
+
+  <h1 class="page-title">WHO WE ARE</h1>
+
+  <div class="info-grid">
+    <div class="info-block">
+      <h2>MEET THE FOUNDER</h2>
+      <p>
+        LYLO TECH was founded by Sarah, a full-stack developer with a background in creating high-impact systems for businesses across a wide range of industries. She combines strong technical skills with clear, down-to-earth communication. After seeing too many businesses struggle with off-the-shelf tools that didn’t meet their needs, she started LYLO TECH to build software that fits the way people actually work.
+      </p>
+    </div>
+
+    <div class="info-block">
+      <h2>WHO WE ARE</h2>
+      <p>
+        We’re a UK-based software company that builds fully tailored digital systems for businesses across all industries. We’re female-founded, independent, and committed to making technology easier to understand and easier to manage. Whether it’s a CRM, booking platform, or internal dashboard, our goal is always the same: to create well-built, practical systems that support businesses from day one.
+      </p>
+    </div>
+
+    <div class="info-block" style="grid-column: span 2;">
+      <h2>WHAT MAKES US DIFFERENT</h2>
+      <p>
+        We don’t use templates, and we don’t add layers of process that get in the way. Every system is built from the ground up to match the client’s operations. Clients speak directly to the developers building their tools, which means fewer delays, better understanding, and more effective results. We focus on clarity, function, and creating systems that are straightforward and easy to use.
+      </p>
+    </div>
+  </div>
+
+  <div class="circle"></div>
+</main>
+
 {% endblock %}

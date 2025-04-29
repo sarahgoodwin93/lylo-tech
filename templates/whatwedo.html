@@ -4,19 +4,129 @@
 
 <style>
 body {
-  background-color: #178747;
-  overflow: hidden;
+  background-color: #178747;;
+  margin: 0;
+  overflow-x: hidden;
+  position: relative;
 }
 
-h1 {
-  color: pink;
+h1, h2, h3 {
+  font-family: 'mr-eaves-xl-modern';
 }
 
+/* Top Navigation */
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  padding: 20px 40px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nav-link {
+  color: #481821;
+  text-decoration: none;
+}
+
+/* Page Title */
+.page-title {
+  text-align: center;
+  font-size: 64px;
+  font-weight: bold;
+  color: #f4b6d2;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+/* Info Blocks */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  padding: 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.info-block {
+  background-color: #fffff4;
+  padding: 30px 25px;
+  border-radius: 12px;
+  color: #481821;
+  z-index: 1;
+}
+
+.info-block h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.info-block p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Circle (bottom right) */
+.circle {
+  width: 50px;
+  height: 50px;
+  background-color: #fffff4;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
 </style>
 
-<a class="nav-link" href="{% url 'home' %}">
-  <h1>Home</h1>
-</a>
+<div id="logoContainer">
+  <a href="{% url 'home' %}">
+      <div class="nav-link main-logo-link">
+          <img id="logo" class="logo-img" src="{% static 'images/logo-pink.png' %}" alt="lylo logo image">
+      </div>
+  </a>
+</div>
 
-<div class="circle"></div>
+<main class="main-content">
+  <nav class="navigation">
+    <a href="{% url 'home' %}" class="nav-link">HOME</a>
+    <a href="{% url 'whoweare' %}" class="nav-link">WHO WE ARE</a>
+    <a href="{% url 'workwithus' %}" class="nav-link">WORK WITH US</a>
+  </nav>
+
+  <h1 class="page-title">WHAT WE DO</h1>
+
+  <div class="info-grid">
+    <div class="info-block">
+      <h2>Build Bespoke Systems</h2>
+      <p>
+        We build custom web-based systems that are designed around your business, not someone else's idea of how it should run. This includes CRMs, booking platforms, registration systems, internal dashboards, client portals, and more. Every feature is developed to match your workflows and goals, with a focus on making daily tasks faster and easier.
+      </p>
+      <p>
+        Nothing is off-the-shelf or one-size-fits-all. We take time to understand how your business operates and what you actually need from your tech. The result is a system that feels natural to use, with clean interfaces, reliable performance, and full control over how your tools work together. You get exactly what you need, built to support your business now and into the future.
+      </p>
+    </div>
+
+    <div class="info-block">
+      <h2>No More Templates</h2>
+      <p>
+        Most businesses rely on multiple disconnected tools to manage their work. One for bookings, another for invoicing, a third for emails, and more for client data, forms, or reporting. These systems often don't integrate well, and businesses are left paying for subscriptions that only partially solve their problems.
+      </p>
+      <p>
+        To make it all work, teams create workarounds, duplicate effort, and lose time trying to force templated software into processes it was never designed to handle. At LYLO TECH, we build one custom system that brings everything together. No more patching things together. Just one platform that fits your workflow and supports your business properly from the start.      
+      </p>
+    </div>
+
+    <div class="info-block" style="grid-column: span 2;">
+      <h2>No Middle Man</h2>
+      <p>
+        When you work with LYLO TECH, you collaborate directly with the developers building your system. This keeps communication clear and development fast. You won’t be passed between sales teams or project managers. You’ll be working with someone who understands both the technical side and what your business is trying to achieve.
+      </p>
+    </div>
+  </div>
+
+  <div class="circle"></div>
+</main>
+
 {% endblock %}
