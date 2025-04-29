@@ -7,6 +7,10 @@
   color: #178747;
 }
 
+.defaultBackground {
+  background-color: #fffff4;
+}
+
 /* Ensure full-height layout */
 html, body {
     height: 6000px;

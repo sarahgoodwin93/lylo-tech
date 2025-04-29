@@ -96,38 +96,63 @@ document.addEventListener("DOMContentLoaded", function () {
 $(document).ready(function() {
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
+        console.log('ScrollTop:', scrollTop);
 
-        var imageBottom = $(".image-home-2").length ? $(".image-home-2").offset().top + $(".image-home-2").outerHeight() : 0;
-        var firstColorChange = $(".colorChangeFirstPoint").length ? $(".colorChangeFirstPoint").offset().top + $(".colorChangeFirstPoint").outerHeight() : 0;
-        var secondColorChange = $(".colorChangeSecondPoint").length ? $(".colorChangeSecondPoint").offset().top + $(".colorChangeSecondPoint").outerHeight() : 0;
-        var thirdColorChange = $(".colorChangeThirdPoint").length ? $(".colorChangeThirdPoint").offset().top + $(".colorChangeThirdPoint").outerHeight() : 0;
-        var fourthColorChange = $(".colorChangeFourthPoint").length ? $(".colorChangeFourthPoint").offset().top + $(".colorChangeFourthPoint").outerHeight() : 0;
+        var defaultColorChange = $(".colorChangeDefaultPoint").length ? $(".colorChangeDefaultPoint").offset().top : 0;
+        var firstColorChange = $(".colorChangeFirstPoint").length ? $(".colorChangeFirstPoint").offset().top : 0;
+        var secondColorChange = $(".colorChangeSecondPoint").length ? $(".colorChangeSecondPoint").offset().top : 0;
+        var thirdColorChange = $(".colorChangeThirdPoint").length ? $(".colorChangeThirdPoint").offset().top : 0;
+        var fourthColorChange = $(".colorChangeFourthPoint").length ? $(".colorChangeFourthPoint").offset().top : 0;
 
-        // First section: Pink
-        if (scrollTop >= imageBottom && scrollTop < firstColorChange) {
-            $('body').addClass('changeColorPink').removeClass('changeColorGreen changeColorLightGreen changeColorBlue');
-            $('.project-details-first').addClass('textColorChangeMoron').removeClass('textColorChangeBeige');
-        } 
-        // Second section: Green
-        else if (scrollTop >= firstColorChange && scrollTop < secondColorChange) {
-            $('body').addClass('changeColorGreen').removeClass('changeColorPink changeColorLightGreen changeColorBlue');
-            $('.project-details-second').addClass('textColorChangeBeige').removeClass('textColorChangeMoron');
-        } 
-        // Third section: Light Green
-        else if (scrollTop >= secondColorChange && scrollTop < thirdColorChange) {
-            $('body').addClass('changeColorLightGreen').removeClass('changeColorPink changeColorGreen changeColorBlue');
-            $('.project-details-third').addClass('textColorChangeGreen').removeClass('textColorChangeBeige');
-        } 
-        // Fourth section: Blue
-        else if (scrollTop >= thirdColorChange) {
-            $('body').addClass('changeColorBlue').removeClass('changeColorPink changeColorGreen changeColorLightGreen');
-            $('.project-details-fourth').addClass('textColorChangeMoron').removeClass('textColorChangeBeige');
-        } 
-        // Reset if above first section
-        else {
-            $('body').removeClass('changeColorPink changeColorGreen changeColorLightGreen changeColorBlue');
+        console.log('defaultColorChange:', defaultColorChange);
+        console.log('firstColorChange:', firstColorChange);
+        console.log('secondColorChange:', secondColorChange);
+        console.log('thirdColorChange:', thirdColorChange);
+        console.log('fourthColorChange:', fourthColorChange);
+
+        if (scrollTop < firstColorChange) {
+            console.log('Setting background to DEFAULT (#fffff4)');
+            $('body')
+                .removeClass('changeColorPink changeColorGreen changeColorLightGreen changeColorBlue')
+                .addClass('defaultBackground');
             $('.project-details-first, .project-details-second, .project-details-third, .project-details-fourth')
                 .removeClass('textColorChangeMoron textColorChangeBeige textColorChangeGreen');
+        }
+        else if (scrollTop >= firstColorChange && scrollTop < secondColorChange) {
+            console.log('Setting background to PINK');
+            $('body')
+                .removeClass('defaultBackground changeColorGreen changeColorLightGreen changeColorBlue')
+                .addClass('changeColorPink');
+            $('.project-details-first')
+                .addClass('textColorChangeMoron')
+                .removeClass('textColorChangeBeige');
+        } 
+        else if (scrollTop >= secondColorChange && scrollTop < thirdColorChange) {
+            console.log('Setting background to GREEN');
+            $('body')
+                .removeClass('defaultBackground changeColorPink changeColorLightGreen changeColorBlue')
+                .addClass('changeColorGreen');
+            $('.project-details-second')
+                .addClass('textColorChangeBeige')
+                .removeClass('textColorChangeMoron');
+        } 
+        else if (scrollTop >= thirdColorChange && scrollTop < fourthColorChange) {
+            console.log('Setting background to LIGHT GREEN');
+            $('body')
+                .removeClass('defaultBackground changeColorPink changeColorGreen changeColorBlue')
+                .addClass('changeColorLightGreen');
+            $('.project-details-third')
+                .addClass('textColorChangeGreen')
+                .removeClass('textColorChangeBeige');
+        } 
+        else if (scrollTop >= fourthColorChange) {
+            console.log('Setting background to BLUE');
+            $('body')
+                .removeClass('defaultBackground changeColorPink changeColorGreen changeColorLightGreen')
+                .addClass('changeColorBlue');
+            $('.project-details-fourth')
+                .addClass('textColorChangeMoron')
+                .removeClass('textColorChangeBeige');
         }
     });
 });
