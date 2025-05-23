@@ -1,3 +1,3 @@
 import os
 
-os.environ["SECRET_KEY"] = 'django-insecure-qsc0!o#tm45#9p743v9v8kl0ag=5(5m&i1lljdt*@bg=mfn4()'
+os.environ["SECRET_KEY"] = 'ex<_QNl_>e+?a1^[d0KvL<ZE?ftt<<'
