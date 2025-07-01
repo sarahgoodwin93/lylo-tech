@@ -13,7 +13,7 @@
 
 /* Ensure full-height layout */
 html, body {
-    height: 8000px;
+    height: 6000px;
     margin: 0;
     padding: 0;
     display: flex;
@@ -680,7 +680,6 @@ body.changeColorBlue {
   }
 
   .light-green-box h1,
-  .burgundy-box h1,
   .blue-circle-box h1,
   .pink-box h1 {
     color: #490f1c;
@@ -693,4 +692,108 @@ body.changeColorBlue {
   .nav-link {
     padding: 0px;
   }
+
+  .lylo-circle {
+    display: none;
+  }
 }
+
+/* Project Section */ 
+
+@media (max-width: 768px) {
+  .project-section,
+  .project-section-second,
+  .project-section-third,
+  .project-section-fourth {
+    position: static;
+    padding: 2rem 1rem;
+    margin-bottom: 3rem;
+    background-color: inherit;
+  }
+
+  .project-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  /* Reset project text styles */
+  .project-details-first,
+  .project-details-second,
+  .project-details-third,
+  .project-details-fourth {
+    position: static !important;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 1rem;
+    color: #fffff4;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  .project-details h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-details h2 {
+    font-size: 1.1rem;
+    margin-top: 1.2rem;
+    font-weight: bold;
+  }
+
+  .project-details p {
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .project-details .description {
+    margin-top: 1rem;
+  }
+
+  /* Reset project image containers */
+  .project-images-first,
+  .project-images-second,
+  .project-images-third,
+  .project-images-fourth {
+    width: 100%;
+    padding: 0 1rem;
+  }
+  .project-images-first,
+  .project-images-second,
+  .project-images-third,
+  .project-images-fourth {
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 1rem;
+    position: static !important;
+  }
+  
+  .project-image-first,
+  .project-image-second,
+  .project-image-third,
+  .project-image-fourth {
+    position: relative !important;         /* overrides absolute */
+    left: 0 !important;                    /* removes left offset */
+    top: 0 !important;                     /* removes top offset */
+    transform: none !important;           /* disables translate */
+    width: 100% !important;
+    display: block;
+    aspect-ratio: 16 / 9;
+    min-height: 180px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    margin: 0 auto;
+  }  
+
+  /* Optional: Hide floating decorative elements */
+  .lylo-circle,
+  .lylo-circle-2 {
+    display: none;
+  }
+}
+
+
