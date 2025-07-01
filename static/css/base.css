@@ -694,7 +694,7 @@ body.changeColorBlue {
   }
 
   .lylo-circle {
-    display: none;
+    visibility: hidden;
   }
 }
 

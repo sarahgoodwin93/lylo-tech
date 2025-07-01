@@ -78,6 +78,51 @@ h1, h2, h3 {
   bottom: 30px;
   right: 30px;
 }
+
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 15px 20px;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .page-title {
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    text-align: left;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .info-block {
+    padding: 20px 20px;
+    font-size: 14px;
+  }
+
+  .info-block h2 {
+    font-size: 18px;
+  }
+
+  .info-block p {
+    font-size: 14px;
+  }
+
+  .circle {
+    width: 40px;
+    height: 40px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
 </style>
 
 <div id="logoContainer">
