@@ -46,6 +46,7 @@
       <div id="pink-section" class="pink-box box-sway">
       <h1>FIND OUT MORE</h1>
       </div>
+      <p class="colorChangeFirstPoint" style="height: 1px;"></p>
    </a>
 </section>
 
@@ -54,7 +55,7 @@
    <div class="project-container">
       <div id="first-project">
          <div class="project-details-first project-details">
-            <h1>Roku Salon</h1>
+            <h1 id="findOutMoreLink">Roku Salon</h1>
             <h2>Stack</h2>
             <p>Shopify Liquid</p>
             <h2>Design</h2>
@@ -237,4 +238,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+
+<script>
+   document.addEventListener('DOMContentLoaded', () => {
+     if (window.innerWidth <= 768) {
+       const link = document.getElementById('findOutMoreLink');
+       if (link) link.setAttribute('href', '#find-out-more-mobile');
+     }
+   });
+ </script>
+ 
 {% endblock %}
