@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+* {
+    background-color: #D0E5ED;
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #D0E5ED;
+}
+
+.logo-container {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+}
+
+.logo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.enter-link {
+    position: absolute;
+    top: 24%;
+    left: 4%;
+    transform: rotate(-20deg);
+    text-decoration: none;
+    font-weight: bold;
+    color: #3B0A20;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .logo-wrapper {
+    margin-right: 2%;
+  }
+}
+
+</style>
+
+<div class="logo-wrapper">
+    <div class="logo-container">
+        <a href="{% url 'home' %}" class="enter-link">ENTER HERE</a>
+        <img src="{% static 'images/lylo-logo-home.png' %}" alt="Lylo Logo" class="logo-img" />
+    </div>
+</div>
+
+
+{% endblock %}

@@ -8,4 +8,5 @@ urlpatterns = [
     path('home/whoweare/', views.WhoWeAreView, name='whoweare'),
     path('home/whatwedo/', views.WhatWeDoView, name='whatwedo'),
     path('home/behindthebuild/', views.BehindTheBuildView, name='behindthebuild'),
+    path('home/newhome/', views.NewHome, name='newhome'),
 ]

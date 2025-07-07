@@ -15,6 +15,11 @@ def home_page(request):
     return render (request, 'home.html')
 
 
+#Home 2
+def NewHome(request):
+    return render (request, 'newhome.html')
+
+
 # Work with us page.
 def WorkWithUsView(request):
     submitted = False
