@@ -4,10 +4,11 @@ from . import views
 
 urlpatterns = [
     path('', views.NewHome, name='newhome'),
-    path('home/workwithus/', views.WorkWithUsView, name='workwithus'),
-    path('home/whoweare/', views.WhoWeAreView, name='whoweare'),
-    path('home/whatwedo/', views.WhatWeDoView, name='whatwedo'),
-    path('home/behindthebuild/', views.BehindTheBuildView, name='behindthebuild'),
-    path('home/newdesignhome/', views.NewDesignHome, name='newdesignhome'),
-    path('home/oldhome', views.home_page, name="home"),
+    path('workwithus/', views.WorkWithUsView, name='workwithus'),
+    path('whoweare/', views.WhoWeAreView, name='whoweare'),
+    path('whatwedo/', views.WhatWeDoView, name='whatwedo'),
+    path('behindthebuild/', views.BehindTheBuildView, name='behindthebuild'),
+    path('newdesignhome/', views.NewDesignHome, name='newdesignhome'),
+    path('oldhome', views.home_page, name="home"),
+    path('portfolio/', views.PortfolioView, name='portfolio')
 ]

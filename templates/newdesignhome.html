@@ -124,23 +124,23 @@ h1 {
 </div>
 
 <div class="tags-container">
-    <a href="#who-we-are" class="shape-link who-we-are fall-item">
+    <a href="{% url 'whoweare' %}" class="shape-link who-we-are fall-item">
       <img src="{% static 'images/who-we-are-square.svg' %}" alt="Who We Are" />
     </a>
   
-    <a href="#portfolio" class="shape-link portfolio fall-item">
+    <a href="{% url 'portfolio' %}" class="shape-link portfolio fall-item">
       <img src="{% static 'images/portfolio-circle.svg' %}" alt="Portfolio" />
     </a>
   
-    <a href="#what-we-do" class="shape-link what-we-do fall-item">
+    <a href="{% url 'whatwedo' %}" class="shape-link what-we-do fall-item">
       <img src="{% static 'images/what-we-do-rectangle.svg' %}" alt="What We Do" />
     </a>
   
-    <a href="#work-with-us" class="shape-link work-with-us fall-item">
+    <a href="{% url 'workwithus' %}" class="shape-link work-with-us fall-item">
       <img src="{% static 'images/work-with-us-triangle.svg' %}" alt="Work With Us" />
     </a>
   
-    <a href="#blog" class="shape-link blog fall-item">
+    <a href="{% url 'behindthebuild' %}" class="shape-link blog fall-item">
       <img src="{% static 'images/blog-rectangle.svg' %}" alt="Blog" />
     </a>
   </div>

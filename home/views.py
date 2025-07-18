@@ -57,4 +57,10 @@ def BehindTheBuildView(request):
     return render (request, 'behindthebuild.html')
 
 
+def PortfolioView(request):
+    return render(request, 'portfolio.html')
+
+
+
+
 
