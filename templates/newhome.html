@@ -5,6 +5,8 @@
 <style>
 * {
     background-color: #D0E5ED;
+    margin: 0;
+    padding: 0;
 }
 
 .logo-wrapper {
@@ -12,19 +14,29 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #D0E5ED;
+    overflow: hidden;
+    position: relative;
 }
 
 .logo-container {
     position: relative;
     width: 90%;
     max-width: 600px;
+    transition: transform 1.2s ease-in-out;
+    z-index: 10;
+}
+
+.logo-container.grow {
+    transform: scale(25);
+    opacity: 0;
+    transition: transform 1.2s ease-in-out, opacity 0.8s ease-in-out;
 }
 
 .logo-img {
     width: 100%;
     height: auto;
     display: block;
+    z-index: 1;
 }
 
 .enter-link {
@@ -36,22 +48,62 @@
     font-weight: bold;
     color: #3B0A20;
     font-size: 1rem;
+    z-index: 20;
 }
+
+.fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+    z-index: 50;
+}
+
+.fade-overlay.show {
+    opacity: 1;
+}
+
 
 @media (max-width: 768px) {
-  .logo-wrapper {
-    margin-right: 2%;
-  }
+    .logo-wrapper {
+        margin-right: 2%;
+    }
 }
-
 </style>
 
 <div class="logo-wrapper">
-    <div class="logo-container">
-        <a href="{% url 'home' %}" class="enter-link">ENTER HERE</a>
+    <div class="logo-container" id="logoContainer">
+        <div class="fade-overlay" id="fadeOverlay"></div>
+        <a href="#" class="enter-link" id="enterLink">ENTER HERE</a>
         <img src="{% static 'images/lylo-logo-home.png' %}" alt="Lylo Logo" class="logo-img" />
     </div>
 </div>
 
+<script>
+    document.getElementById('enterLink').addEventListener('click', function(e) {
+        e.preventDefault();
+    
+        const logo = document.getElementById('logoContainer');
+        const fade = document.getElementById('fadeOverlay');
+    
+        logo.classList.add('grow');
+    
+        // Start fading to white slightly later
+        setTimeout(() => {
+            fade.classList.add('show');
+        }, 600);
+    
+        // Slight pause before redirect
+        setTimeout(() => {
+            window.location.href = "{% url 'newdesignhome' %}";
+        }, 2000); // longer delay for fade to complete
+    });
+</script>   
+  
 
 {% endblock %}

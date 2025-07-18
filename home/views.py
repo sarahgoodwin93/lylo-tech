@@ -12,12 +12,17 @@ from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 def home_page(request):
-    return render (request, 'home.html')
+    return render (request, 'oldhome.html')
 
 
 #Home 2
 def NewHome(request):
     return render (request, 'newhome.html')
+
+
+#Home 2
+def NewDesignHome(request):
+    return render (request, 'newdesignhome.html')
 
 
 # Work with us page.

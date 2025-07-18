@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+
+body {
+  font-family: 'FT Polar', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 6rem;
+  color: #490f1c;
+  text-transform: uppercase;
+  margin-top: 8rem;
+}
+
+h1 {
+    font-family: mr-eaves-xl-sans-narrow, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -0.05em;
+}
+
+.logo-img-new {
+    max-width: 50%!important;
+}
+
+.home-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.tags-container {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  display: block;
+  overflow: hidden;
+}
+
+.shape-link {
+  position: absolute;
+  display: block;
+  width: 18vw;
+  transition: transform 0.3s ease;
+}
+.shape-link:hover {
+  transform: translateY(-10px);
+}
+.shape-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Positioning each shape */
+.who-we-are {
+  top: 5%;
+  left: 25%;
+}
+.portfolio {
+  top: 20%;
+  left: 40%;
+}
+.what-we-do {
+  top: 11%;
+  left: 58%;
+}
+.work-with-us {
+  top: 36%;
+  left: 27%;
+}
+.blog {
+  top: 48%;
+  left: 49%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tags-container {
+    height: auto;
+    padding-bottom: 2rem;
+  }
+
+  .shape-link {
+    position: static;
+    display: block;
+    margin: 2rem auto;
+    width: 40vw;
+  }
+}
+</style>
+
+<!-- Animated Logo Container -->
+<div id="logoContainerHome">
+   <a href="{% url 'newdesignhome' %}">
+       <div class="nav-link main-logo-link">
+           <img id="logo" class="logo-img logo-img-new" src="{% static 'images/logo-pink.png' %}" alt="lylo logo image">
+       </div>
+   </a>
+</div>
+
+<div class="home-heading">
+    <h1>HERE TO KEEP YOUR HEAD ABOVE TECH</h1>
+</div>
+
+<div class="tags-container">
+    <a href="#who-we-are" class="shape-link who-we-are">
+      <img src="{% static 'images/who-we-are-square.svg' %}" alt="Who We Are" />
+    </a>
+  
+    <a href="#portfolio" class="shape-link portfolio">
+      <img src="{% static 'images/portfolio-circle.svg' %}" alt="Portfolio" />
+    </a>
+  
+    <a href="#what-we-do" class="shape-link what-we-do">
+      <img src="{% static 'images/what-we-do-rectangle.svg' %}" alt="What We Do" />
+    </a>
+  
+    <a href="#work-with-us" class="shape-link work-with-us">
+      <img src="{% static 'images/work-with-us-triangle.svg' %}" alt="Work With Us" />
+    </a>
+  
+    <a href="#blog" class="shape-link blog">
+      <img src="{% static 'images/blog-rectangle.svg' %}" alt="Blog" />
+    </a>
+  </div>
+  
+
+{% endblock %}

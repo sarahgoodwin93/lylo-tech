@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'FT Polar';
+  src: url('{% static "fonts/FTPolarTrial-Regular.otf" %}') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 .main-colours {
   color:#490f1c;
   color: #fffff4;
@@ -75,6 +83,12 @@ body.changeColorBlue {
 
 /* --- Logo Positioning --- */
 #logoContainer {
+  top: 3rem;
+  left: 3rem;
+  z-index: 1000;
+}
+
+#logoContainerHome {
   position: absolute;
   top: 3rem;
   left: 3rem;
@@ -795,5 +809,3 @@ body.changeColorBlue {
     display: none;
   }
 }
-
-
