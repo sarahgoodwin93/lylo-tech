@@ -9,6 +9,10 @@
     padding: 0;
 }
 
+#home-page-wrapper {
+    background-color: #FFFDF5;
+}
+
 .logo-wrapper {
     display: flex;
     justify-content: center;
@@ -57,7 +61,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #ffffff;
+    background: #FFFDF5;
     opacity: 0;
     pointer-events: none;
     transition: opacity 1s ease-in-out;
@@ -75,13 +79,24 @@
     }
 }
 </style>
+<div id="home-page-wrapper">
+    <head>
+        <link rel="preload" href="{% static 'images/logo-pink.png' %}" as="image">
+        <link rel="preload" href="{% static 'images/who-we-are-square.svg' %}" as="image">
+        <link rel="preload" href="{% static 'images/portfolio-circle.svg' %}" as="image">
+        <link rel="preload" href="{% static 'images/what-we-do-rectangle.svg' %}" as="image">
+        <link rel="preload" href="{% static 'images/work-with-us-triangle.svg' %}" as="image">
+        <link rel="preload" href="{% static 'images/blog-rectangle.svg' %}" as="image">
+    </head>
 
-<div class="logo-wrapper">
-    <div class="logo-container" id="logoContainer">
-        <div class="fade-overlay" id="fadeOverlay"></div>
-        <a href="#" class="enter-link" id="enterLink">ENTER HERE</a>
-        <img src="{% static 'images/lylo-logo-home.png' %}" alt="Lylo Logo" class="logo-img" />
+    <div class="logo-wrapper">
+        <div class="logo-container" id="logoContainer">
+            <div class="fade-overlay" id="fadeOverlay"></div>
+            <a href="#" class="enter-link" id="enterLink">ENTER HERE</a>
+            <img src="{% static 'images/lylo-logo-home.png' %}" alt="Lylo Logo" class="logo-img" />
+        </div>
     </div>
+
 </div>
 
 <script>
@@ -90,20 +105,27 @@
     
         const logo = document.getElementById('logoContainer');
         const fade = document.getElementById('fadeOverlay');
+        const wrapper = document.getElementById("home-page-wrapper");
     
-        logo.classList.add('grow');
+        // Start background color transition immediately
+        wrapper.style.transition = "background-color 0.5s ease-in-out";
+        wrapper.style.backgroundColor = "#FFFDF5";
     
-        // Start fading to white slightly later
+        // Then grow and fade the logo slightly later
+        setTimeout(() => {
+            logo.classList.add('grow');
+        }, 200); // slight delay after bg change starts
+    
+        // Fade overlay even later
         setTimeout(() => {
             fade.classList.add('show');
-        }, 600);
+        }, 800);
     
-        // Slight pause before redirect
+        // Final redirect
         setTimeout(() => {
             window.location.href = "{% url 'newdesignhome' %}";
-        }, 2000); // longer delay for fade to complete
+        }, 1800);
     });
-</script>   
-  
+    </script>
 
 {% endblock %}

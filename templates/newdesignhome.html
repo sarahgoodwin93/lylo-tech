@@ -48,13 +48,16 @@ h1 {
   width: 18vw;
   transition: transform 0.3s ease;
 }
-.shape-link:hover {
-  transform: translateY(-10px);
-}
+
 .shape-link img {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.shape-link:hover img {
+  transform: translateY(-10px);
 }
 
 /* Positioning each shape */
@@ -78,6 +81,18 @@ h1 {
   top: 48%;
   left: 49%;
 }
+
+.fall-item {
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.fall-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -109,26 +124,38 @@ h1 {
 </div>
 
 <div class="tags-container">
-    <a href="#who-we-are" class="shape-link who-we-are">
+    <a href="#who-we-are" class="shape-link who-we-are fall-item">
       <img src="{% static 'images/who-we-are-square.svg' %}" alt="Who We Are" />
     </a>
   
-    <a href="#portfolio" class="shape-link portfolio">
+    <a href="#portfolio" class="shape-link portfolio fall-item">
       <img src="{% static 'images/portfolio-circle.svg' %}" alt="Portfolio" />
     </a>
   
-    <a href="#what-we-do" class="shape-link what-we-do">
+    <a href="#what-we-do" class="shape-link what-we-do fall-item">
       <img src="{% static 'images/what-we-do-rectangle.svg' %}" alt="What We Do" />
     </a>
   
-    <a href="#work-with-us" class="shape-link work-with-us">
+    <a href="#work-with-us" class="shape-link work-with-us fall-item">
       <img src="{% static 'images/work-with-us-triangle.svg' %}" alt="Work With Us" />
     </a>
   
-    <a href="#blog" class="shape-link blog">
+    <a href="#blog" class="shape-link blog fall-item">
       <img src="{% static 'images/blog-rectangle.svg' %}" alt="Blog" />
     </a>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const items = document.querySelectorAll('.fall-item');
+      items.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, index * 150); // 150ms stagger
+      });
+    });
+  </script>
+  
   
 
 {% endblock %}
